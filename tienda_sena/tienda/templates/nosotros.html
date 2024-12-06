@@ -1,0 +1,42 @@
+{% include 'perfiles/iniciar_sesion.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda SENA</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div class="logo"><a>TIENDA SENA</a></div>
+            <div class="botones_centro">
+                <a href="{% url 'index' %}" id="botonCentro">Inicio</a>
+                <a href="{% url 'productos' %}" id="botonCentro">Productos</a>
+                <a href="{% url 'nosotros' %}" id="botonCentro">Nosotros</a>
+            </div>
+            <div class="botoneslogin">
+                <a href="{% url 'formulario_registrarse' %}">Registrarse</a>
+                <a href="" class="btnIniciarSesion">Iniciar Sesion</a>
+            </div>
+            
+        </header>
+
+        <main>
+            <a style="color:white" href="{% url 'formulario_registrarse' %}">Formulario Registrarse</a>
+        <br>
+
+
+
+        </main>
+        
+
+
+
+
+    </div>
+    <script src="{% static 'JS/index.js' %}"></script>
+</body>
+</html>

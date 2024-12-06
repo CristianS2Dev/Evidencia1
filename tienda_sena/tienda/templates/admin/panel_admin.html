@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}" />
+</head>
+<body>
+    <div class="menuLateral" id="menuLateral">
+        <div class="centar">
+            <ul>
+                <li class="activo"><a href="{% url 'panel_admin'%}">Panel</a></li>
+                <li><a href="{% url 'product_panel_admin'%}">Productos</a></li>
+                <li><a href="{% url 'user_panel_admin'%}">Clientes</a></li>
+                <li><a href="{% url 'vendedor_panel_admin'%}">Vendedores</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="contenidoPrincipal">
+        <header>
+            <div class="barraSuperior">
+                <div class="iconoMenu">☰</div>
+                <div class="barraBusqueda">
+                    <input type="text" placeholder="Buscar en productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="iconoUsuarioHeader">
+                    <img src="usuario.jpg" alt="Foto de usuario" class="iconoUsuario">
+                    <span>Administrador</span>
+                    <span class="flechaDesplegable">▾</span>
+                    <div class="menuDesplegable">
+                        <ul>
+                            <li>Configuración</li>
+                            <li>Cerrar sesión</li>
+                            <li><a href="{% url 'index'%}">Landin Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>        
+        <section class="tarjetasEstadisticas">
+            <div class="tarjetaEstadistica">
+                <h3>📦 Productos</h3>
+                <p><strong>19</strong> Solicitudes nuevas</p>
+                <span>+105% Productos nuevos</span>
+                <small>
+                    <select id="filtroProductos" class="filtroSelect">
+                        <option value="7">Últimos 7 días</option>
+                        <option value="30">Últimos 30 días</option>
+                        <option value="30">Últimos 3 meses</option>
+                        <option value="365">Último año</option>
+                    </select>
+                </small>
+            </div>
+            <div class="tarjetaEstadistica">
+                <h3>🛒 Vendedores</h3>
+                <p><strong>7</strong> Solicitudes nuevas</p>
+                <span>+0.5% Vendedores nuevos</span>
+                <small> 
+                    <select id="filtroVendedores" class="filtroSelect">
+                        <option value="7">Últimos 7 días</option>
+                        <option value="30">Últimos 30 días</option>
+                        <option value="30">Últimos 3 meses</option>
+                        <option value="365">Último año</option>
+                    </select>
+                </small>
+            </div>
+            <div class="tarjetaEstadistica">
+                <h3>👥 Usuarios</h3>
+                <p><strong>90</strong> Usuarios nuevos</p>
+                <span>+57% Usuarios nuevos</span>
+                <small> 
+                    <select id="filtroUsuarios" class="filtroSelect">
+                        <option value="7">Últimos 7 días</option>
+                        <option value="30">Últimos 30 días</option>
+                        <option value="30">Últimos 3 meses</option>
+                        <option value="365">Último año</option>
+                    </select>
+                </small>
+            </div>
+            <div class="tarjetaEstadistica">
+                <h3>Ventas</h3>
+                <p><strong>18</strong> Ventas nuevas</p>
+                <span class="negativo">-4% Vendedores nuevos</span>
+                <small>
+                    <select id="filtroVentas" class="filtroSelect">
+                        <option value="7">Últimos 7 días</option>
+                        <option value="30">Últimos 30 días</option>
+                        <option value="30">Últimos 3 meses</option>
+                        <option value="365">Último año</option>
+                    </select>
+                </small>
+            </div>
+        </section>        
+        <section class="seccionGrafica">
+            <h2>Gráfica de Ventas</h2>
+            <div class="grafica">
+                <canvas id="graficoVentas"></canvas>
+            </div>
+        </section>
+        <section class="detallesVentas">
+            <h2 style="text-align:center;">Detalles de Ventas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Ganancia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="text-align:center;">No hay ventas disponibles</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+    </div>
+    <script>
+        const iconoMenu = document.getElementById('iconoMenu');
+        const menuLateral = document.getElementById('menuLateral');
+
+        iconoMenu.addEventListener('click', () => {
+            menuLateral.classList.toggle('visible');
+        });
+    </script>
+</body>
+</html>

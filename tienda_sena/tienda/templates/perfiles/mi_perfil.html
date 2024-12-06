@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda SENA</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="contenedor">
+      <header>
+        <div class="logo">
+          <a
+            >TIENDA <br />
+            SENA</a
+          >
+        </div>
+        <div class="botones_centro">
+          <a href="{% url 'index' %}" id="botonCentro">Inicio</a>
+          <a href="{% url 'productos' %}" id="botonCentro">Productos</a>
+          <a href="{% url 'nosotros' %}" id="botonCentro">Nosotros</a>
+          <a href="{% url 'registrar' %}">Registrarse</a>
+        </div>
+        <div class="botoneslogin">
+          <a class="btnIniciarSesion" href="{% url 'mi_perfil' %}"
+            >Mi perfil</a
+          >
+        </div>
+      </header>
+      <main>
+        <div class="contenedor_perfil_cliente">
+          <section class="izquierda_mi_perfil">
+            <div class="btn_izquierda_mi_perfil">
+              <img src="{% static 'IMG/carrito.png' %}" alt="">
+              <a>Compras</a>
+            </div>
+            <div class="btn_izquierda_mi_perfil">
+              <img src="{% static 'IMG/login.png' %}" alt="">
+              <a>Mi perfil</a>
+            </div>
+            <div class="btn_izquierda_mi_perfil">
+              <img src="{% static 'IMG/options.png' %}" alt="">
+              <a>Configuracion</a>
+            </div>
+            <div class="btn_izquierda_mi_perfil2">
+              <h1>AYUDA</h1>
+            </div>
+          </section>
+          <div class="derecha_mi_perfil">
+            <section class="arriba_mi_perfil">
+              <div class="arriba_datos_mi_perfil">
+                <div class="img_perfil_mi_perfil">
+                  <img src="" alt="Foto De perfil">
+                </div>
+                <div class="nombre_correo_mi_perfil">
+                  <h1>Andres Usuga</h1>
+                  <h2>ausuga3@gmail.com</h2>
+                </div>
+              </div>
+            </section>
+            <section class="abajo_mi_perfil">
+              <div class="cuadro_abajo_mi_perfil">
+                <div class="img_cuadro_abajo_mi_perfil">
+                  <img src="" alt="logo primer cuadro" />
+                </div>
+                <div class="txt_cuadro_abajo_mi_perfil">
+                  <a>Informacion Personal</a>
+                </div>
+              </div>
+              <div class="cuadro_abajo_mi_perfil">
+                <div class="img_cuadro_abajo_mi_perfil">
+                  <img src="" alt="logo segundo cuadro" />
+                </div>
+                <div class="txt_cuadro_abajo_mi_perfil">
+                  <a>Datos De Mi Cuenta</a>
+                </div>
+              </div>
+              <div class="cuadro_abajo_mi_perfil">
+                <div class="img_cuadro_abajo_mi_perfil">
+                  <img src="" alt="logo tercer cuadro" />
+                </div>
+                <div class="txt_cuadro_abajo_mi_perfil">
+                  <a>Mis Direcciones</a>
+                </div>
+              </div>
+              <div class="cuadro_abajo_mi_perfil">
+                <div class="img_cuadro_abajo_mi_perfil">
+                  <img src="" alt="logo cuarto cuadro" />
+                </div>
+                <div class="txt_cuadro_abajo_mi_perfil">
+                  <a>Cofiguracion</a>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

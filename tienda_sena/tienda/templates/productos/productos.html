@@ -1,0 +1,141 @@
+{% load static %}
+{% include 'perfiles/iniciar_sesion.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda SENA</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <div class="logo"><a>TIENDA SENA</a></div>
+            <div class="botones_centro">
+                <a href="{% url 'index' %}" id="botonCentro">Inicio</a>
+                <a href="{% url 'productos' %}" id="botonCentro">Productos</a>
+                <a href="{% url 'nosotros' %}" id="botonCentro">Nosotros</a>
+            </div>
+            <div class="botoneslogin">
+                <a href="{% url 'registrar' %}">Registrarse</a>
+                <a href="" class="btnIniciarSesion">Iniciar Sesion</a>
+            </div>
+            
+        </header>
+        <main>
+            <section class="tarjeta_producto" >
+                 <div class="imagenes_producto">
+                    <div class="imagen_principal_producto">
+                        <img src="{% static 'IMG/img_Principal.png' %}" alt="Imagen grande producto">
+                    </div>
+                    <div class="imagenes_secundarias_producto">
+                        <img src="{% static 'IMG/img1.png' %}" alt="Imagen segunda producto">
+                        <img src="{% static 'IMG/img2.png' %}" alt="Imagen tercera producto">
+                        <img src="{% static 'IMG/img3.png' %}" alt="Imagen cuarta producto">
+                        <img src="{% static 'IMG/img4.png' %}" alt="Imagen cuarta producto">
+                    </div>
+                </div>
+                <div class="datos_descripcion_producto">
+                    <div class="titulo_producto">
+                        <H1>Sueño de Arena</H1>
+                        <p>Es lo que estas buscando,confeccionado con materiales de alta calidad.</p>
+                    </div>
+                    <div class="star-rating">            
+                        <div> 
+                          <input type="radio" id="star5" name="rating" value="5" /><label
+                            for="star5"
+                            >★</label
+                          >
+                          <input type="radio" id="star4" name="rating" value="4" /><label
+                            for="star4"
+                            >★</label
+                          >
+                          <input type="radio" id="star3" name="rating" value="3" /><label
+                            for="star3"
+                            >★</label
+                          >
+                          <input type="radio" id="star2" name="rating" value="2" /><label
+                            for="star2"
+                            >★</label
+                          >
+                          <input type="radio" id="star1" name="rating" value="1" /><label
+                            for="star1"
+                            >★</label
+                          >
+                        </div>
+                    </div>
+                    <div class="colores_producto1">
+                        <form class="colores_producto"> 
+                            <div class="btn_colores1" >
+                                <p>Color: </p> 
+                            </div> 
+                            <div class="btn_colores" >
+                                <input type="button" class="color1" >
+                                <input type="button" class="color2" >
+                                <input type="button" class="color3" >
+                                <input type="button" class="color4" >
+                                <input type="button" class="color5" >
+                            </div>                    
+                        </form>
+                          
+                    </div>
+                    <div class="tallas_producto">
+                        <form class="formulario_tallas"> 
+                            <div class="titulo_tallas">
+                                <p>Tallas: </p>
+                            </div>
+                            <div class="botones_tallas">
+                                <input type="button" value="xs">
+                                <input type="button" value="s">
+                                <input type="button" value="m">
+                                <input type="button" value="l">
+                                <input type="button" value="xl">
+                            </div>                    
+                        </form>
+                          
+                    </div>
+                    <div class="precio_producto">
+                        <div>
+                            <del>$90.000</del>
+                            <h1>$45.000</h1>
+                        <div>
+                            <h2>50% off</h2>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="btn_comprar_ahora_producto">
+                        <img src="{% static 'IMG/carrito.png' %}" alt="Agregar al carrito">
+                        <button>Comprar ahora</button>
+                    </div>
+                </div>
+                <div class="descripcion_vendedor_producto">
+                    <div class="texto_descripcion_vendedor_producto">
+                        <p>Sueño de arena <br> Siempre soñé con ver uno de mis vestidos en una gran exposición. Cuando me entere que podia presentar mi diseño en una pagina web exclusiva para que los aprendices de mi institucion publiquen y venda su arte y sus emprendimientos, no podía creerlo. Trabajé incansablemente en un vestido que reflejara la elegancia y la sofisticación de <br> “Luz del sol”.</p><br>
+                    </div>
+                    <div class="presentacion_vendedor_producto">
+                        <div class="imagen_vendedor_producto">
+                            <img src="{% static 'IMG/login.png' %}" alt="Imagen vendedor">
+                        </div>
+                        <div class="nombre_vendedor_producto">
+                            <h2>Yuliana Pino</h2>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+
+
+            
+        </main>
+
+
+
+
+
+    </div>
+</body>
+<script src="{% static 'JS/index.js' %}"></script>
+</html>

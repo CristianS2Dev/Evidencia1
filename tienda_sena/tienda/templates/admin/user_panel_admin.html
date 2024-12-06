@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}" />
+    <title>Panel de clientes</title>
+</head>
+<body>
+    <div class="menuLateral" id="menuLateral">
+        <div class="centar">
+            <ul>
+                <li class="activo"><a href="{% url 'panel_admin'%}">Panel</a></li>
+                <li><a href="{% url 'product_panel_admin'%}">Productos</a></li>
+                <li><a href="{% url 'user_panel_admin'%}">Clientes</a></li>
+                <li><a href="{% url 'vendedor_panel_admin'%}">Vendedores</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="contenidoPrincipal">
+        <header>
+            <div class="barraSuperior">
+                <div class="iconoMenu">☰</div>
+                <div class="barraBusqueda">
+                    <input type="text" placeholder="Buscar en productos...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="iconoUsuarioHeader">
+                    <img src="usuario.jpg" alt="Foto de usuario" class="iconoUsuario">
+                    <span>Administrador</span>
+                    <span class="flechaDesplegable">▾</span>
+                    <div class="menuDesplegable">
+                        <ul>
+                            <li>Configuración</li>
+                            <li>Cerrar sesión</li>
+                            <li><a href="{% url 'index'%}">Landin Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="detallesProductos">
+            <div class="seccionFiltro">
+                <button>Filtrar</button>
+            </div>
+            <div class="barraDesplazamiento">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Id</th>
+                            <th>Nombre del usuario</th>
+                            <th>Compras</th>
+                            <th>Fecha registro</th>
+                            <th>Estado</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaUsuarios">
+                        <!-- Productos se agregarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const usuarios = [
+                { img: 1, nombre: "Juan Valdez", id: "01", fechaRegistro: "2024-09-04", compras: 1, estado: "verde" },
+                { img: 2, nombre: "Maria Clara", id: "02", fechaRegistro: "2024-09-03", compras: 1, estado: "verde" },
+                { img: 3, nombre: "Juan Felipe", id: "03", fechaRegistro: "2024-09-07", compras: 1, estado: "verde" },
+                { img: 4, nombre: "Camilo Castro", id: "04", fechaRegistro: "2024-08-23", compras: 1, estado: "rojo" },
+                { img: 5, nombre: "Julio Palacio", id: "05", fechaRegistro: "2024-08-15", compras: 1, estado: "verde" },
+                { img: 6, nombre: "Paulo Jimenez", id: "06", fechaRegistro: "2024-08-11", compras: 1, estado: "verde" },
+                { img: 7, nombre: "Cristina Garcia", id: "07", fechaRegistro: "2024-08-09", compras: 1, estado: "verde" },
+                { img: 8, nombre: "Juan Lopez", id: "08", fechaRegistro: "2024-08-05", compras: 1, estado: "verde" },
+                { img: 9, nombre: "Sara Salas", id: "09", fechaRegistro: "2024-08-01", compras: 1, estado: "rojo" },
+                { img: 10, nombre: "Juliana Pineda", id: "10", fechaRegistro: "2024-07-27", compras: 1, estado: "rojo" },
+                { img: 11, nombre: "Juan Galindo", id: "11", fechaRegistro: "2024-07-19", compras: 1, estado: "verde" },
+                { img: 12, nombre: "Felipe Perez", id: "12", fechaRegistro: "2024-07-15", compras: 1, estado: "verde" },
+                { img: 13, nombre: "Luisa Marin", id: "13", fechaRegistro: "2024-07-10", compras: 1, estado: "rojo" }
+            ];
+    
+            const listaUsuarios = document.getElementById('listaUsuarios');
+    
+            usuarios.forEach(usuario => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td><img src="placeholder.jpg" alt="Usuario" width="40"></td>
+                    <td>${usuario.id.toString().padStart(2, '0')}</td>
+                    <td>${usuario.nombre}</td>
+                    <td>${usuario.compras}</td>
+                    <td>${usuario.fechaRegistro}</td>
+                    <td><span class="estadoUsuario ${usuario.estado}"></span></td>
+                    <td class="iconosAcciones">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                `;
+                listaUsuarios.appendChild(fila);
+            });
+        });
+    </script>        
+</body>
+</html>

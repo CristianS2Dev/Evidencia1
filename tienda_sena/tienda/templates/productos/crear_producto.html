@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda SENA</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="contenedor">
+      <header>
+        <div class="logo"><a>TIENDA SENA</a></div>
+        <div class="botones_centro">
+          <a href="{% url 'index' %}" id="botonCentro">Inicio</a>
+          <a href="{% url 'productos' %}" id="botonCentro">Productos</a>
+          <a href="{% url 'nosotros' %}" id="botonCentro">Mis ventas</a>
+        </div>
+        <div class="botoneslogin">
+          <input type="button" value="Mi Perfil" />
+        </div>
+      </header>
+      <main>
+        <section class="formulario_producto1">
+          <div class="perfil_vendedor_producto">
+            <div class="imagen_usuario">
+              <img
+                src="{% static 'IMG/user.png' %}"
+                alt="Icono de vendedor"
+                width="80px"
+                height="80px"
+              />
+            </div>
+            <h1>Cristian Vargas</h1>
+          </div>
+          <div class="formulario_foto_producto">
+            <div class="fotos_maximas">
+              <p>Fotos 0/10 puedes agregar un maximo de 10 fotos</p>
+            </div>
+            <div class="agregar_imagen">
+              <input type="file" multiple accept="image/*" />
+            </div>
+            <div>
+              <p>Arrastra y suelta tus fotos aquí o haz clic para subir</p>
+            </div>
+          </div>
+          <div class="formulario_registro">
+            <form
+              class="producto_vendedor"
+              action="{% url 'crear_producto' %}"
+              method="POST"
+            >
+              {% csrf_token %}
+              <div class="inputs_producto_vendedor">
+                <input
+                  type="text"
+
+                  required
+                  placeholder="Nombre del producto"
+                />
+              </div>  
+              <div class="inputs_producto_vendedor">
+                <input
+                  type="text"
+                  required
+                  placeholder="Precio"
+                />
+              </div>
+              
+              <div class="inputs_producto_vendedor">
+                <input
+                  type="text"
+                  required
+                  placeholder="Categoria"
+                />
+              </div>
+              
+              <div class="inputs_producto_vendedor">
+                <input
+                  type="text"
+                  required
+                  placeholder="Descripcion Breve"
+                />
+              </div>
+              
+              <div class="textarea_producto_vendedor">
+                <textarea
+                  rows="4"
+                  placeholder="Decripcion completa"
+                ></textarea>
+              </div>
+              
+              <div class="textarea_producto_vendedor">
+                <textarea
+                  rows="4"
+                  placeholder="Historia Producto"
+                ></textarea>
+              </div>
+              <div class="btn_producto_vendedor">
+                <button id="publicar_producto">Publicar</button>
+              </div>
+              
+              <div class="btn_producto_vendedor">
+                <a id="cancelar_producto"><u>Cancelar</u></a>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section class="formulario_producto2">
+          <div class="marco_tarjeta">
+            <h1>Vista previa</h1>
+            <div class="tarjeta_completa">
+              <div class="imagen">
+                <div class="fondo_imagen"></div>
+              </div>
+              <div class="imagenes_vista_previa">
+                <input type="radio" />
+                <input type="radio" />
+                <input type="radio" />
+                <input type="radio" />
+              </div>
+              <div class="datos_abajo_imagen_previa">
+                <div class="datos_izquierda_tarjeta">
+                  <h3>Nombre del producto</h3>
+  
+                  <h3>Categoria</h3>
+                  <h3>Breve descripcion del producto</h3>
+                </div>
+                <div class="star-rating">
+                  <div> 
+
+                    <input type="radio" id="star5" name="rating" value="5" /><label
+                      for="star5"
+                      >★</label
+                    >
+                    <input type="radio" id="star4" name="rating" value="4" /><label
+                      for="star4"
+                      >★</label
+                    >
+                    <input type="radio" id="star3" name="rating" value="3" /><label
+                      for="star3"
+                      >★</label
+                    >
+                    <input type="radio" id="star2" name="rating" value="2" /><label
+                      for="star2"
+                      >★</label
+                    >
+                    <input type="radio" id="star1" name="rating" value="1" /><label
+                      for="star1"
+                      >★</label
+                    >
+                  </div>
+                  <br />
+                  <div class="parrafo_precio">
+                    <p>10.000 COP</p>
+                  </div>
+                </div>
+              </div>
+              <div class="tallas_crear_producto">
+                <div class="titulo_tallas">
+                  <h1>Talla:</h1>
+                </div>
+                <div class="botones_tallas">
+                  <input class="xs" type="button" value="XS" />
+                  <input class="s" type="button" value="S" />
+                  <input class="m" type="button" value="M" />
+                  <input class="l" type="button" value="L" />
+                  <input class="xl" type="button" value="XL" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

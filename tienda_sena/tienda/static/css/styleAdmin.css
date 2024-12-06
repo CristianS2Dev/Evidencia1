@@ -1,0 +1,1386 @@
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #575756;
+    color: #fff;
+}
+
+/* Menu lateral */
+.menuLateral {
+    width: 250px;
+    background-color: #D5D5D5;
+    height: 100vh;
+    position: fixed;
+    padding-top: 50px;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000; 
+}
+
+.menuLateral.oculto {
+    transform: translateX(-250px); 
+}
+
+.menuLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuLateral ul li {
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #39A900; 
+    text-align: center;
+    margin-top: 80px;
+}
+
+.menuLateral ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuLateral ul li.activo a {
+    background-color: #39A900; 
+    color: #fff; 
+}
+
+.menuLateral ul li a:hover {
+    background-color: #2d7d00; 
+    color: #fff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* Botón para abrir/cerrar el menú en pantallas pequeñas */
+.botonMenu {
+    display: none; 
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.botonMenu:hover {
+    background-color: #555; 
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menuLateral {
+        transform: translateX(-250px); 
+    }
+    
+    .menuLateral.mostrar {
+        transform: translateX(0); 
+    }
+
+    .botonMenu {
+        display: block; 
+    }
+    
+    .contenidoPrincipal {
+        margin-left: 0; 
+    }
+}
+
+/* Navbar y Barra Superior */
+.barraSuperior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    padding: 10px 20px;
+    height: 60px;
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Icono del menú */
+.iconoMenu {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Barra de búsqueda */
+.barraBusqueda {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 60%; 
+}
+
+.barraBusqueda input {
+    border: none;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+}
+
+.barraBusqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #002f48;
+}
+
+/* Contenedor de usuario en la barra superior */
+.iconoUsuarioHeader {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+    padding-right: 0; 
+}
+
+.iconoUsuarioHeader img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.iconoUsuarioHeader span {
+    color: white;
+    margin-right: 25px;
+}
+
+.iconoUsuarioHeader i {
+    color: white;
+    margin-left: 50px;
+}
+
+/* Menú desplegable del administrador */
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+}
+
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 10;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444;
+}
+
+/* Ajustes del ícono de flecha */
+.iconoUsuarioHeader:hover .flechaDesplegable {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 50px;
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: none; 
+    z-index: 1;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #555; 
+    cursor: pointer;
+}
+
+.menuDesplegable ul li:last-child {
+    border-bottom: none; 
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444; 
+}
+
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+    align-items: left;
+}
+
+/* Main content */
+.contenidoPrincipal {
+    margin-left: 250px;  
+    margin-top: 70px;   
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Tarjetas estadísticas */
+.tarjetasEstadisticas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.tarjetaEstadistica {
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    border: 1px solid #555;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjetaEstadistica:hover {
+    transform: translateY(-5px);
+}
+
+.tarjetaEstadistica h3 {
+    margin: 0;
+    color: #ccc;
+    font-size: 20px;
+}
+
+.tarjetaEstadistica p {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.tarjetaEstadistica span {
+    color: #64FF00;
+    font-size: 14px;
+}
+
+.tarjetaEstadistica span.negativo {
+    color: #FF4B4B;
+}
+
+.tarjetaEstadistica small {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+}
+
+/* Estilo del select con efecto hover y sombra */
+.filtroSelect {
+    background-color:#39A900; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.filtroSelect:hover {
+    background-color: #555;
+    color: #fff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+}
+
+/* Graph */
+.seccionGrafica {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.seccionGrafica h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.grafica {
+    background-color: #2d2d2d;
+    height: 480px;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #555;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* Sales table */
+.detallesVentas table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate; 
+    border-spacing: 0; 
+    border: 1px solid #666; 
+    border-radius: 10px; 
+}
+
+.detallesVentas th, .detallesVentas td {
+    padding: 15px;
+    text-align: left;
+    background-color: #1a1a1a; 
+    color: #fff; 
+    border-bottom: 1px solid #555; 
+}
+
+.detallesVentas th {
+    background-color: #333; 
+    font-weight: bold;
+    border-bottom: 2px solid #666; 
+    border-top: none; 
+    border-left: 1px solid #555; 
+    border-right: 1px solid #555; 
+}
+
+.detallesVentas td {
+    border-left: 1px solid #555; 
+    border-right: 1px solid #555;
+}
+
+.detallesVentas tr:last-child td {
+    border-bottom: none; 
+}
+
+.detallesVentas table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.detallesVentas th:first-child, .detallesVentas td:first-child {
+    border-left: none; 
+}
+
+.detallesVentas th:last-child, .detallesVentas td:last-child {
+    border-right: none; 
+}
+
+/* Centering content */
+.centrar {
+    padding-top: 8rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .menuLateral {
+        transform: translateX(-100%);
+    }
+
+    .contenidoPrincipal {
+        margin-left: 0;
+    }
+
+    .tarjetaEstadistica {
+        width: 45%;
+    }
+
+    .barraBusqueda input {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menuLateral {
+        display: none;
+    }
+
+    .contenidoPrincipal {
+        margin-left: 0;
+    }
+
+    .tarjetaEstadistica {
+        width: 100%;
+    }
+
+    .barraBusqueda input {
+        width: 120px;
+    }
+}
+
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #575756;
+    color: #fff;
+}
+
+/* Menu lateral */
+.menuLateral {
+    width: 250px;
+    background-color: #D5D5D5;
+    height: 100vh;
+    position: fixed;
+    padding-top: 50px;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000; 
+}
+
+.menuLateral.oculto {
+    transform: translateX(-250px); 
+}
+
+.menuLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuLateral ul li {
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #39A900; 
+    text-align: center;
+    margin-top: 80px;
+}
+
+.menuLateral ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuLateral ul li.activo a {
+    background-color: #39A900; 
+    color: #fff; 
+}
+
+.menuLateral ul li a:hover {
+    background-color: #2d7d00; 
+    color: #fff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* Botón para abrir/cerrar el menú en pantallas pequeñas */
+.botonMenu {
+    display: none; 
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.botonMenu:hover {
+    background-color: #555; 
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menuLateral {
+        transform: translateX(-250px); 
+    }
+    
+    .menuLateral.mostrar {
+        transform: translateX(0); 
+    }
+
+    .botonMenu {
+        display: block; 
+    }
+    
+    .contenidoPrincipal {
+        margin-left: 0; 
+    }
+}
+
+/* Navbar y Barra Superior */
+.barraSuperior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    padding: 10px 20px;
+    height: 60px;
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Icono del menú */
+.iconoMenu {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Barra de búsqueda */
+.barraBusqueda {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 60%; 
+}
+
+.barraBusqueda input {
+    border: none;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+}
+
+.barraBusqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #002f48;
+}
+
+/* Contenedor de usuario en la barra superior */
+.iconoUsuarioHeader {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+    padding-right: 0; 
+}
+
+.iconoUsuarioHeader img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.iconoUsuarioHeader span {
+    color: white;
+    margin-right: 25px;
+}
+
+.iconoUsuarioHeader i {
+    color: white;
+    margin-left: 50px;
+}
+
+/* Menú desplegable del administrador */
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+}
+
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 10;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444;
+}
+
+/* Ajustes del ícono de flecha */
+.iconoUsuarioHeader:hover .flechaDesplegable {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 50px;
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: none; 
+    z-index: 1;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #555; 
+    cursor: pointer;
+}
+
+.menuDesplegable ul li:last-child {
+    border-bottom: none; 
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444; 
+}
+
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+    align-items: left;
+}
+/* Tabla de productos */
+.detallesProductos {
+    margin-top: 80px;
+    padding: 20px;
+    align-items: center;
+}
+
+.barraDesplazamiento {
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: #D5D5D5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0552C2;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    background-color: #1b1b1b;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.iconosAcciones i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.iconosAcciones i:hover {
+    color: #39A900;
+}
+
+/* Estado del producto */
+.estadoUsuario {
+    display: inline-block;
+    width: 50px;
+    height: 10px;
+    border-radius: 15%;
+}
+
+.estadoUsuario.verde {
+    background-color: green;
+}
+
+.estadoUsuario.rojo {
+    background-color: red;
+}
+
+
+/* Productos */
+
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #575756;
+    color: #fff;
+}
+
+/* Menu lateral */
+.menuLateral {
+    width: 250px;
+    background-color: #D5D5D5;
+    height: 100vh;
+    position: fixed;
+    padding-top: 50px;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000; 
+}
+
+.menuLateral.oculto {
+    transform: translateX(-250px); 
+}
+
+.menuLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuLateral ul li {
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #39A900; 
+    text-align: center;
+    margin-top: 80px;
+}
+
+.menuLateral ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuLateral ul li.activo a {
+    background-color: #39A900; 
+    color: #fff; 
+}
+
+.menuLateral ul li a:hover {
+    background-color: #2d7d00; 
+    color: #fff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* Botón para abrir/cerrar el menú en pantallas pequeñas */
+.botonMenu {
+    display: none; 
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.botonMenu:hover {
+    background-color: #555; 
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menuLateral {
+        transform: translateX(-250px); 
+    }
+    
+    .menuLateral.mostrar {
+        transform: translateX(0); 
+    }
+
+    .botonMenu {
+        display: block; 
+    }
+    
+    .contenidoPrincipal {
+        margin-left: 0; 
+    }
+}
+
+/* Navbar y Barra Superior */
+.barraSuperior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    padding: 10px 20px;
+    height: 60px;
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Icono del menú */
+.iconoMenu {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Barra de búsqueda */
+.barraBusqueda {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 60%; 
+}
+
+.barraBusqueda input {
+    border: none;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+}
+
+.barraBusqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #002f48;
+}
+
+/* Contenedor de usuario en la barra superior */
+.iconoUsuarioHeader {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+    padding-right: 0; 
+}
+
+.iconoUsuarioHeader img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.iconoUsuarioHeader span {
+    color: white;
+    margin-right: 25px;
+}
+
+.iconoUsuarioHeader i {
+    color: white;
+    margin-left: 50px;
+}
+
+/* Menú desplegable del administrador */
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+}
+
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 10;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444;
+}
+
+/* Ajustes del ícono de flecha */
+.iconoUsuarioHeader:hover .flechaDesplegable {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 50px;
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: none; 
+    z-index: 1;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #555; 
+    cursor: pointer;
+}
+
+.menuDesplegable ul li:last-child {
+    border-bottom: none; 
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444; 
+}
+
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+    align-items: left;
+}
+/* Tabla de productos */
+.detallesProductos {
+    margin-top: 80px;
+    padding: 20px;
+    align-items: center;
+}
+
+.barraDesplazamiento {
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: #D5D5D5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0552C2;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    background-color: #1b1b1b;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.iconosAcciones i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.iconosAcciones i:hover {
+    color: #39A900;
+}
+
+/* Estado del producto */
+.estadoProducto {
+    display: inline-block;
+    width: 50px;
+    height: 10px;
+    border-radius: 15%;
+}
+
+.estadoProducto.verde {
+    background-color: green;
+}
+
+.estadoProducto.rojo {
+    background-color: red;
+}
+
+/* Vendedores */
+
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #575756;
+    color: #fff;
+}
+
+/* Menu lateral */
+.menuLateral {
+    width: 250px;
+    background-color: #D5D5D5;
+    height: 100vh;
+    position: fixed;
+    padding-top: 50px;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000; 
+}
+
+.menuLateral.oculto {
+    transform: translateX(-250px); 
+}
+
+.menuLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuLateral ul li {
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #39A900; 
+    text-align: center;
+    margin-top: 80px;
+}
+
+.menuLateral ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuLateral ul li.activo a {
+    background-color: #39A900; 
+    color: #fff; 
+}
+
+.menuLateral ul li a:hover {
+    background-color: #2d7d00; 
+    color: #fff; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+/* Botón para abrir/cerrar el menú en pantallas pequeñas */
+.botonMenu {
+    display: none; 
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.botonMenu:hover {
+    background-color: #555; 
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menuLateral {
+        transform: translateX(-250px); 
+    }
+    
+    .menuLateral.mostrar {
+        transform: translateX(0); 
+    }
+
+    .botonMenu {
+        display: block; 
+    }
+    
+    .contenidoPrincipal {
+        margin-left: 0; 
+    }
+}
+
+/* Navbar y Barra Superior */
+.barraSuperior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    padding: 10px 20px;
+    height: 60px;
+    width: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Icono del menú */
+.iconoMenu {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Barra de búsqueda */
+.barraBusqueda {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+    width: 60%; 
+}
+
+.barraBusqueda input {
+    border: none;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+}
+
+.barraBusqueda button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #002f48;
+}
+
+/* Contenedor de usuario en la barra superior */
+.iconoUsuarioHeader {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+    padding-right: 0; 
+}
+
+.iconoUsuarioHeader img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.iconoUsuarioHeader span {
+    color: white;
+    margin-right: 25px;
+}
+
+.iconoUsuarioHeader i {
+    color: white;
+    margin-left: 50px;
+}
+
+/* Menú desplegable del administrador */
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+}
+
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 10;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444;
+}
+
+/* Ajustes del ícono de flecha */
+.iconoUsuarioHeader:hover .flechaDesplegable {
+    transform: rotate(180deg);
+}
+
+/* Menú desplegable */
+.menuDesplegable {
+    position: absolute;
+    top: 60px; 
+    right: 50px;
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: none; 
+    z-index: 1;
+}
+
+.menuDesplegable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuDesplegable ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #555; 
+    cursor: pointer;
+}
+
+.menuDesplegable ul li:last-child {
+    border-bottom: none; 
+}
+
+.menuDesplegable ul li:hover {
+    background-color: #444; 
+}
+
+.iconoUsuarioHeader:hover .menuDesplegable {
+    display: block;
+    align-items: left;
+}
+/* Tabla de productos */
+.detallesProductos {
+    margin-top: 80px;
+    padding: 20px;
+    align-items: center;
+}
+
+.barraDesplazamiento {
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: #D5D5D5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0552C2;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    background-color: #1b1b1b;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.iconosAcciones i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.iconosAcciones i:hover {
+    color: #39A900;
+}
+
+/* Estado del producto */
+.estadoUsuario {
+    display: inline-block;
+    width: 50px;
+    height: 10px;
+    border-radius: 15%;
+}
+
+.estadoUsuario.verde {
+    background-color: green;
+}
+
+.estadoUsuario.rojo {
+    background-color: red;
+}

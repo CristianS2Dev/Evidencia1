@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}" />
+    <title>Panel de Vendedores</title>
+</head>
+<body>
+    <div class="menuLateral" id="menuLateral">
+        <div class="centar">
+            <ul>
+                <li class="activo"><a href="{% url 'panel_admin'%}">Panel</a></li>
+                <li><a href="{% url 'product_panel_admin'%}">Productos</a></li>
+                <li><a href="{% url 'user_panel_admin'%}">Clientes</a></li>
+                <li><a href="{% url 'vendedor_panel_admin'%}">Vendedores</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="contenidoPrincipal">
+        <header>
+            <div class="barraSuperior">
+                <div class="iconoMenu">☰</div>
+                <div class="barraBusqueda">
+                    <input type="text" placeholder="Buscar en vendedores...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="iconoUsuarioHeader">
+                    <img src="usuario.jpg" alt="Foto de usuario" class="iconoUsuario">
+                    <span>Administrador</span>
+                    <span class="flechaDesplegable">▾</span>
+                    <div class="menuDesplegable">
+                        <ul>
+                            <li>Configuración</li>
+                            <li>Cerrar sesión</li>
+                            <li><a href="{% url 'index'%}">Landin Page</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="detallesProductos">
+            <div class="seccionFiltro">
+                <button>Filtrar</button>
+            </div>
+            <div class="barraDesplazamiento">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Id</th>
+                            <th>Nombre del vendedor</th>
+                            <th>Ventas</th>
+                            <th>Fecha registro</th>
+                            <th>Estado</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaVendedores">
+                        <!-- Vendedores se agregarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const vendedores = [
+                { img: 1, nombre: "James Rodríguez", id: "01", fechaRegistro: "2024-09-04", ventas: 20, estado: "verde" },
+                { img: 2, nombre: "David Ospina", id: "02", fechaRegistro: "2024-09-03", ventas: 18, estado: "verde" },
+                { img: 3, nombre: "Juan Cuadrado", id: "03", fechaRegistro: "2024-09-07", ventas: 15, estado: "verde" },
+                { img: 4, nombre: "Yerry Mina", id: "04", fechaRegistro: "2024-08-23", ventas: 10, estado: "rojo" },
+                { img: 5, nombre: "Duván Zapata", id: "05", fechaRegistro: "2024-08-15", ventas: 12, estado: "verde" },
+                { img: 6, nombre: "Luis Díaz", id: "06", fechaRegistro: "2024-08-11", ventas: 25, estado: "verde" },
+                { img: 7, nombre: "Wilmar Barrios", id: "07", fechaRegistro: "2024-08-09", ventas: 8, estado: "verde" },
+                { img: 8, nombre: "Rafael Santos Borré", id: "08", fechaRegistro: "2024-08-05", ventas: 5, estado: "verde" },
+                { img: 9, nombre: "Matheus Uribe", id: "09", fechaRegistro: "2024-08-01", ventas: 9, estado: "rojo" },
+                { img: 10, nombre: "Falcao García", id: "10", fechaRegistro: "2024-07-27", ventas: 30, estado: "rojo" },
+                { img: 11, nombre: "Johan Mojica", id: "11", fechaRegistro: "2024-07-19", ventas: 16, estado: "verde" },
+                { img: 12, nombre: "Daniel Muñoz", id: "12", fechaRegistro: "2024-07-15", ventas: 7, estado: "verde" },
+                { img: 13, nombre: "Frank Fabra", id: "13", fechaRegistro: "2024-07-10", ventas: 4, estado: "rojo" }
+            ];
+    
+            const listaVendedores = document.getElementById('listaVendedores');
+    
+            vendedores.forEach(vendedor => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td><img src="placeholder.jpg" alt="Vendedor" width="40"></td>
+                    <td>${vendedor.id.toString().padStart(2, '0')}</td>
+                    <td>${vendedor.nombre}</td>
+                    <td>${vendedor.ventas}</td>
+                    <td>${vendedor.fechaRegistro}</td>
+                    <td><span class="estadoUsuario ${vendedor.estado}"></span></td>
+                    <td class="iconosAcciones">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                `;
+                listaVendedores.appendChild(fila);
+            });
+        });
+    </script>        
+</body>
+</html>

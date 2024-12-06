@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}" />
+    <title>Panel de productos</title>
+</head>
+<body>
+    <div class="menuLateral" id="menuLateral">
+        <div class="centar">
+            <ul>
+                <li class="activo"><a href="{% url 'panel_admin'%}">Panel</a></li>
+                <li><a href="{% url 'product_panel_admin'%}">Productos</a></li>
+                <li><a href="{% url 'user_panel_admin'%}">Clientes</a></li>
+                <li><a href="{% url 'vendedor_panel_admin'%}">Vendedores</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="contenidoPrincipal">
+        <header>
+            <div class="barraSuperior">
+                <div class="iconoMenu">☰</div>
+                <div class="barraBusqueda">
+                    <input type="text" placeholder="Buscar en productos...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="iconoUsuarioHeader">
+                    <img src="usuario.jpg" alt="Foto de usuario" class="iconoUsuario">
+                    <span>Administrador</span>
+                    <span class="flechaDesplegable">▾</span>
+                    <div class="menuDesplegable">
+                        <ul>
+                            <li>Configuración</li>
+                            <li>Cerrar sesión</li>
+                            <li><a href="{% url 'index'%}">Landin Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="contenidoPrincipal">
+                <header>
+                    <div class="barraSuperior">
+                        <div class="iconoMenu">☰</div>
+                        <div class="barraBusqueda">
+                            <input type="text" placeholder="Buscar en productos...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="iconoUsuarioHeader">
+                            <img src="user.jpg" alt="Foto de usuario" class="iconoUsuario">
+                            <span>Administrador</span>
+                            <span class="flechaDesplegable">▾</span>
+                            <div class="menuDesplegable">
+                                <ul>
+                                    <li>Configuración</li>
+                                    <li>Cerrar sesión</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            <section class="detallesProductos">
+                <div class="seccionFiltro">
+                    <button>Filtrar</button>
+                </div>
+                <div class="barraDesplazamiento">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Id</th>
+                                <th>Nombre del producto</th>
+                                <th>Id vendedor</th>
+                                <th>Fecha creación</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaProductos">
+                            <!-- Productos se agregarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            </div>
+        </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const productos = [
+                { id: 1, nombre: "Chaqueta cuero", idVendedor: "01", fecha: "2024-09-07", precio: 45000, estado: "verde" },
+                { id: 2, nombre: "Zapatos", idVendedor: "02", fecha: "2024-09-03", precio: 40000, estado: "rojo" },
+                { id: 3, nombre: "Camiseta", idVendedor: "03", fecha: "2024-09-06", precio: 32000, estado: "verde" },
+                { id: 4, nombre: "Camisa Dama", idVendedor: "04", fecha: "2024-08-19", precio: 35000, estado: "rojo" },
+                { id: 5, nombre: "Sandalias", idVendedor: "05", fecha: "2024-08-15", precio: 44000, estado: "verde" },
+                { id: 6, nombre: "Bolso", idVendedor: "06", fecha: "2024-08-10", precio: 50000, estado: "verde" },
+                { id: 7, nombre: "Vestido", idVendedor: "07", fecha: "2024-08-09", precio: 45000, estado: "verde" },
+                { id: 8, nombre: "Pantalón", idVendedor: "08", fecha: "2024-08-07", precio: 55000, estado: "verde" },
+                { id: 9, nombre: "Faldas", idVendedor: "09", fecha: "2024-07-01", precio: 30000, estado: "verde" },
+                { id: 10, nombre: "Anillo", idVendedor: "10", fecha: "2024-07-07", precio: 35000, estado: "rojo" },
+                { id: 11, nombre: "Abrigo", idVendedor: "11", fecha: "2024-06-23", precio: 45000, estado: "verde" },
+                { id: 12, nombre: "Muebles", idVendedor: "12", fecha: "2024-06-17", precio: 100000, estado: "verde" },
+                { id: 13, nombre: "Cobija", idVendedor: "13", fecha: "2024-05-04", precio: 15000, estado: "rojo" },
+                { id: 14, nombre: "Cocina", idVendedor: "14", fecha: "2024-03-07", precio: 400000, estado: "verde" }
+            ];
+
+            const listaProductos = document.getElementById('listaProductos');
+
+            productos.forEach(producto => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td><img src="placeholder.jpg" alt="Producto" width="40"></td>
+                    <td>${producto.id.toString().padStart(2, '0')}</td>
+                    <td>${producto.nombre}</td>
+                    <td>${producto.idVendedor}</td>
+                    <td>${producto.fecha}</td>
+                    <td>${producto.precio.toLocaleString()}</td>
+                    <td><span class="estadoProducto ${producto.estado}"></span></td>
+                    <td class="iconosAcciones">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </td>
+                `;
+                listaProductos.appendChild(fila);
+            });
+        });
+    </script>   
+</body>
+</html>
