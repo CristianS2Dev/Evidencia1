@@ -11,3 +11,16 @@
 ## - Login
 ## - Registrar
 ## - Productos
+
+# Requerimientos básicos
+
+## Para ejecutar esta plataforma web de manera óptima, tu PC debe cumplir con los siguientes requisitos:
+
+Hardware
+Procesador: Intel Core i3 o equivalente.
+Memoria RAM: 4 GB o más.
+Almacenamiento: 500 MB de espacio disponible (para archivos temporales y caché).
+Software
+Navegador: Última versión de Google Chrome, Mozilla Firefox o Microsoft Edge.
+Sistema operativo: Windows 10, macOS 10.14+, Linux (Ubuntu 18.04 o superior).
+Conexión a Internet: 10 Mbps o más para una experiencia fluida.
